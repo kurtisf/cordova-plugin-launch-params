@@ -1,0 +1,27 @@
+{
+  "name": "cordova-plugin-launch-params",
+  "version": "1.0.0",
+  "description": "A Cordova plugin to record a launch URL for later use.",
+  "cordova": {
+    "id": "cordova-plugin-launch-params",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kurtisf/cordova-plugin-launch-params"
+  },
+  "keywords": [
+    "cordova",
+    "launchurl",
+    "scheme",
+    "launch",
+    "url",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT"
+}

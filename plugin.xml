@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-launch-params"
+        version="1.0.0">
+
+    <name>Launch Params Plugin</name>
+
+    <description>
+      A Cordova plugin to record a launch URL for later use.
+    </description>
+
+    <license>MIT</license>
+
+    <!-- JavaScript Interface -->
+    <js-module src="www/launch-params-plugin.js" name="LaunchParamsPlugin">
+        <clobbers target="LaunchParamsPlugin" />
+    </js-module>
+
+    <!-- Android Configuration -->
+    <platform name="android">
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="LaunchParamsPlugin">
+                <param name="android-package" value="com.apache.cordova.LaunchParamsPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/LaunchParamsPlugin.java" target-dir="src/org/apache/cordova" />
+
+    </platform>
+
+    <config-file target="AndroidManifest.xml" parent="/*/application/activity">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <category android:name="android.intent.category.LAUNCHER" />
+            <data android:scheme="$URL_SCHEME" android:host="direct-launch" android:path="/" />
+        </intent-filter>
+    </config-file>
+
+    <!-- iOS Configuration -->
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="LaunchParamsPlugin">
+                <param name="ios-package" value="LaunchParamsPlugin" onload="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/LaunchParamsPlugin.h" />
+        <source-file src="src/ios/LaunchParamsPlugin.m" />
+
+    </platform>
+
+</plugin>
